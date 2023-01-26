@@ -1,0 +1,14 @@
+{
+  "name": "@icouldnotfigureoutausername/helpful-functions-package",
+  "version": "1.0.0",
+  "description": "Provides helpful functions so you can don't have to worry about writting redundant code",
+  "license": "MIT",
+  "repository": "iyanez2314/helpful-funtions-package",
+  "main": "index.js",
+  "keywords": [
+    "tiny",
+    "npm",
+    "package",
+    "bamblehorse"
+  ]
+}
