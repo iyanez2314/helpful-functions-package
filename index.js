@@ -49,7 +49,7 @@ export async function GetRequestFromApiWithKey(api, apiKey) {
 /**
  *
  * @param {*} api fetches from provided api
- * @returns json data
+ * @returns json dat
  */
 export async function GetRequestFromApi(api) {
   try {
