@@ -8,9 +8,9 @@
  * @param {*} id id we are looking for
  * @returns an array with with the object containing the id we are looking for
  */
-export function findIdIWant(object, id) {
+module.exports = function findIdIWant(object, id) {
   return object.filter((user) => user.id === id);
-}
+};
 
 /**
  *
@@ -18,9 +18,9 @@ export function findIdIWant(object, id) {
  * @param {*} max the maximum value where we will end the randomization
  * @returns a random number between the minimul and maximum provided values
  */
-export function generateMinMaxRandomNumbers(min, max) {
+module.exports = function generateMinMaxRandomNumbers(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
-}
+};
 
 /**
  *
@@ -28,7 +28,7 @@ export function generateMinMaxRandomNumbers(min, max) {
  * @param {*} apiKey if the api has a bearer token
  * @returns json data
  */
-export async function GetRequestFromApiWithKey(api, apiKey) {
+module.exports = async function GetRequestFromApiWithKey(api, apiKey) {
   try {
     const response = await fetch(api, {
       method: "GET",
@@ -46,14 +46,14 @@ export async function GetRequestFromApiWithKey(api, apiKey) {
   } catch (error) {
     throw new Error(`An error occured while fetching data: ${error}`);
   }
-}
+};
 
 /**
  *
  * @param {*} api fetches from provided api
  * @returns json data
  */
-export async function GetRequestFromApi(api) {
+module.exports = async function GetRequestFromApi(api) {
   try {
     const response = await fetch(api, {
       method: "GET",
@@ -68,7 +68,7 @@ export async function GetRequestFromApi(api) {
   } catch (error) {
     throw new Error(`An error occured while fetching data: ${error}`);
   }
-}
+};
 /**
  *
  * @param {*} api API you need to fetch from
@@ -77,7 +77,7 @@ export async function GetRequestFromApi(api) {
  * @returns return the data in JSON format
  */
 
-export async function PostDataToApiWithKey(api, apiKey, bodyInput) {
+module.exports = async function PostDataToApiWithKey(api, apiKey, bodyInput) {
   try {
     const response = fetch(api, {
       method: "POST",
@@ -96,7 +96,7 @@ export async function PostDataToApiWithKey(api, apiKey, bodyInput) {
   } catch (error) {
     throw new Error(`An error occured while making a post request: ${error}`);
   }
-}
+};
 
 /**
  *
@@ -105,7 +105,7 @@ export async function PostDataToApiWithKey(api, apiKey, bodyInput) {
  * @returns returns the data in JSON format
  */
 
-export async function PostDataToApi(api, bodyInput) {
+module.exports = async function PostDataToApi(api, bodyInput) {
   try {
     const response = fetch(api, {
       method: "POST",
@@ -125,4 +125,4 @@ export async function PostDataToApi(api, bodyInput) {
     An error occured while making a post request: ${error}
     `);
   }
-}
+};
