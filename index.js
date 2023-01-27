@@ -37,7 +37,9 @@ export async function GetRequestFromApiWithKey(api, apiKey) {
       },
     });
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(
+        `Error making API call, status: ${response.status}, message: ${response.statusText}`
+      );
     }
     const data = await response.json();
     return data;
@@ -57,11 +59,56 @@ export async function GetRequestFromApi(api) {
       method: "GET",
     });
     if (!response.ok) {
-      throw new Error(`HTTP error! status ${response}`);
+      throw new Error(
+        `HTTP error! status Error making API call, status: ${response.status}, message: ${response.statusText}`
+      );
     }
     const data = response.json();
     return data;
   } catch (error) {
     throw new Error(`An error occured while fetching data: ${error}`);
+  }
+}
+
+export async function PostDataToApiWithKey(api, apiKey, bodyInput) {
+  try {
+    const response = fetch(api, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ bodyInput }),
+    });
+    if (response.ok) {
+      throw new Error(
+        `Error making API call, status: Error making API call, status: ${response.status}, message: ${response.statusText}`
+      );
+    }
+    return await response.json();
+  } catch (error) {
+    throw new Error(`An error occured while making a post request: ${error}`);
+  }
+}
+
+export async function PostDataToApi(api, bodyInput) {
+  try {
+    const response = fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ bodyInput }),
+    });
+    if (response.ok) {
+      throw new Error(
+        `Error making API call, status: Error making API call, status: ${response.status}, message: ${response.statusText}`
+      );
+    }
+    return await response.json();
+  } catch (error) {
+    throw new Error(`
+    An error occured while making a post request: ${error}
+    `);
   }
 }
