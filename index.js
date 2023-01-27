@@ -51,20 +51,23 @@ const helpful = {
    * @returns json data
    */
   async GetRequestFromApi(api) {
-    try {
-      const response = await fetch(api, {
-        method: "GET",
+    return fetch(api, {
+      method: "GET",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `HTTP error! status Error making API call, status: ${response.status}, message: ${response.statusText}`
+          );
+        }
+        return response.json();
+      })
+      .then(async (data) => {
+        return data;
+      })
+      .catch((err) => {
+        throw new Error(`An error occured while fetching data: ${err}`);
       });
-      if (!response.ok) {
-        throw new Error(
-          `HTTP error! status Error making API call, status: ${response.status}, message: ${response.statusText}`
-        );
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      throw new Error(`An error occured while fetching data: ${error}`);
-    }
   },
   /**
    *
@@ -75,24 +78,20 @@ const helpful = {
    */
 
   async PostDataToApiWithKey(api, apiKey, bodyInput) {
-    try {
-      const response = fetch(api, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ bodyInput }),
-      });
-      if (response.ok) {
+    return fetch(api, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({ bodyInput }),
+    }).then((response) => {
+      if (!response.ok) {
         throw new Error(
           `Error making API call, status: Error making API call, status: ${response.status}, message: ${response.statusText}`
         );
       }
-      return await response.json();
-    } catch (error) {
-      throw new Error(`An error occured while making a post request: ${error}`);
-    }
+      return response.json();
+    }).then;
   },
 
   /**
@@ -122,5 +121,16 @@ const helpful = {
     `);
     }
   },
+
+  async fetchApi(api) {
+    const data = await this.GetRequestFromApi(api);
+    return data;
+  },
+
+  async fetchApiWithKey(api, apiKey) {
+    const data = await this.GetRequestFromApiWithKey(api, apiKey);
+    return data;
+  },
 };
+
 module.exports = helpful;
