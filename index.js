@@ -60,7 +60,7 @@ const helpful = {
           `HTTP error! status Error making API call, status: ${response.status}, message: ${response.statusText}`
         );
       }
-      const data = response.json();
+      const data = await response.json();
       return data;
     } catch (error) {
       throw new Error(`An error occured while fetching data: ${error}`);
