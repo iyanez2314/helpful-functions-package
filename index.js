@@ -69,6 +69,13 @@ export async function GetRequestFromApi(api) {
     throw new Error(`An error occured while fetching data: ${error}`);
   }
 }
+/**
+ *
+ * @param {*} api API you need to fetch from
+ * @param {*} apiKey API key you may need when fetching from the api
+ * @param {*} bodyInput The data you want to send to the api
+ * @returns return the data in JSON format
+ */
 
 export async function PostDataToApiWithKey(api, apiKey, bodyInput) {
   try {
@@ -90,6 +97,13 @@ export async function PostDataToApiWithKey(api, apiKey, bodyInput) {
     throw new Error(`An error occured while making a post request: ${error}`);
   }
 }
+
+/**
+ *
+ * @param {*} api API you are fetching from
+ * @param {*} bodyInput the data you are sending the API
+ * @returns returns the data in JSON format
+ */
 
 export async function PostDataToApi(api, bodyInput) {
   try {
