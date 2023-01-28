@@ -6,6 +6,12 @@
 
 I have only been in the industry for a year and some change but I feel like a lot of the code I have seen and a lot of the code I have written has been really repetative. My response to this was "hey i'm bored lets make my first npm package" so here I am.
 
+## What kind of functions does this package have?
+- fetchApi(api) 
+- fetchApiWithKey(api, apiKey)
+- generateMinMaxRandomNumbers(min, max)
+- findIdIWant(arrayOfObjects, id)
+
 ## Want to use some of the functions in the browser?
 
 Here is how you can do just that
