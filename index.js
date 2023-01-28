@@ -1,8 +1,7 @@
 /**
  * This file will hold ALL the functions that will help you save time in your development
  */
-class helpful {
-  constructor() {}
+const helpful = {
   /**
    *
    * @param {*} object Is an array of objects
@@ -11,7 +10,7 @@ class helpful {
    */
   findIdIWant(object, id) {
     return object.filter((user) => user.id === id);
-  }
+  },
   /**
    *
    * @param {*} min the minimum value we will start the randomization
@@ -20,7 +19,7 @@ class helpful {
    */
   generateMinMaxRandomNumbers(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
-  }
+  },
   /**
    *
    * @param {*} api api we will fetch
@@ -45,7 +44,7 @@ class helpful {
     } catch (error) {
       throw new Error(`An error occured while fetching data: ${error}`);
     }
-  }
+  },
   /**
    *
    * @param {*} api fetches from provided api
@@ -69,7 +68,7 @@ class helpful {
       .catch((err) => {
         throw new Error(`An error occured while fetching data: ${err}`);
       });
-  }
+  },
   /**
    *
    * @param {*} api API you need to fetch from
@@ -93,7 +92,7 @@ class helpful {
       }
       return response.json();
     }).then;
-  }
+  },
   /**
    *
    * @param {*} api API you are fetching from
@@ -120,15 +119,15 @@ class helpful {
     An error occured while making a post request: ${error}
     `);
     }
-  }
+  },
   async fetchApi(api) {
     const data = await this.GetRequestFromApi(api);
     return data;
-  }
+  },
   async fetchApiWithKey(api, apiKey) {
     const data = await this.GetRequestFromApiWithKey(api, apiKey);
     return data;
-  }
-}
+  },
+};
 
 module.exports = helpful;
